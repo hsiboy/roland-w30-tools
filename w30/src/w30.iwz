@@ -1,0 +1,170 @@
+
+[InstallShield Wizard]
+iDate=2
+iTime=1
+Flag=0
+ISX.EXE Size=630784
+ISX.EXE Date=13:44:32  1999.3.1
+ISX.EXE Ver=2.0.0.143
+SETUP.EXE Size=45312
+SETUP.EXE Date=13:44:34  1999.3.1
+SETUP.EXE Ver=3.0.111.0
+SETUP.INS Size=70711
+SETUP.INS Date=13:44:34  1999.3.1
+SETUP.INS Ver=Not available
+_INST16.EX_ Size=70711
+_INST16.EX_ Date=13:44:34  1999.3.1
+_INST16.EX_ Ver=Not available
+_INST32I.EX_ Size=320411
+_INST32I.EX_ Date=13:44:34  1999.3.1
+_INST32I.EX_ Ver=Not available
+ISDEPEND.INI Size=6418
+ISDEPEND.INI Date=13:44:32  1999.3.1
+ISDEPEND.INI Ver=Not available
+SWDEPEND.INI Size=9254
+SWDEPEND.INI Date=13:44:34  1999.3.1
+SWDEPEND.INI Ver=Not available
+ICOMP.EXE Size=119808
+ICOMP.EXE Date=13:44:32  1999.3.1
+ICOMP.EXE Ver=3.00.062
+SPLIT.EXE Size=90624
+SPLIT.EXE Date=13:44:34  1999.3.1
+SPLIT.EXE Ver=3.00.060
+PACKLIST.EXE Size=87552
+PACKLIST.EXE Date=13:44:32  1999.3.1
+PACKLIST.EXE Ver=3.00.060
+Version=2.02
+DevTool=Borland C++ Builder 4
+Platform=Win32
+DisksBuilt=1
+DisksDir=w30\650MB\
+TabsVisit=111111111
+LangNum=0
+LangDir=
+
+[VisualDesign]
+AppName=W30
+AppExe=[Program Files]\w30.exe
+AppExeFile=X:\projects\w30\w30.exe
+Version=1.0
+Company=SoftDeLuxe
+Title=W30
+TitleType=1
+BackgrndBmp=
+BackgrndAlign=4
+Backgrnd=1
+BackgrndColor=10
+Uninstall=1
+Silent=1
+SmsMode=0
+
+[Types]
+Types=1
+Type1Components=1
+Type1Name=Complete
+Type1ComponentList=1 
+
+[Components]
+Components=1
+Component1Groups=2
+Component1Name=Application Files
+Component1Description=Application files needed to run the application
+Component1GroupList=2 1 
+
+[Groups]
+Groups=2
+Group1Size=337692
+Group1Files=2
+Group1Name=Program Files
+Group1Dir=<INSTALLDIR>
+Group1Update=0
+Group1TargetOS=-1
+Group1File1=X:\projects\w30\w30.exe
+Group1File2=X:\projects\w30\readme.txt
+Group2Size=2821096
+Group2Files=3
+Group2Auto=50
+Group2ID=38700
+Group2Name=System Files - WinSysDir
+Group2Dir=[Program Files]
+Group2Update=-1
+Group2TargetOS=-1
+Group2File1=C:\WINDOWS\SYSTEM\VCL40.BPL
+Group2File1Auto=50
+Group2File2=C:\Program Files\Borland\CBuilder4\BIN\CP3245MT.DLL
+Group2File2Auto=50
+Group2File3=C:\Program Files\Borland\CBuilder4\BIN\BORLNDMM.DLL
+Group2File3Auto=50
+
+[Sequence]
+DestinationLocationDir=W30
+SelectProgramFolderName=W30
+DestinationLocation=1
+SelectProgramFolder=1
+BeginFileTransfer=1
+ProgressBar=1
+SetupComplete=1
+SetupCompleteExec=[Program Files]\project1.exe
+SetupCompleteExecParam=
+SetupCompleteExecReadme=[Program Files]\readme.txt
+
+[RegEntries]
+Reg1Path=HKEY_CLASSES_ROOT
+Reg1Val1Type=0
+Reg1Val1Name=(Default)
+Reg1Val1Data=(value not set)
+Reg1Vals=1
+Reg2Path=HKEY_CURRENT_USER
+Reg2Val1Type=0
+Reg2Val1Name=(Default)
+Reg2Val1Data=(value not set)
+Reg2Vals=1
+Reg3Path=HKEY_LOCAL_MACHINE
+Reg3Val1Type=0
+Reg3Val1Name=(Default)
+Reg3Val1Data=(value not set)
+Reg3Vals=1
+Reg4Path=HKEY_USERS
+Reg4Val1Type=0
+Reg4Val1Name=(Default)
+Reg4Val1Data=(value not set)
+Reg4Vals=1
+Reg5Path=HKEY_CURRENT_CONFIG
+Reg5Val1Type=0
+Reg5Val1Name=(Default)
+Reg5Val1Data=(value not set)
+Reg5Vals=1
+Reg6Path=HKEY_DYN_DATA
+Reg6Val1Type=0
+Reg6Val1Name=(Default)
+Reg6Val1Data=(value not set)
+Reg6Vals=1
+Regs=6
+
+[Registry]
+
+[Icons]
+Icons=1
+Icon1Param=
+Icon1Cmd=[Program Files]\project1.exe
+Icon1Description=project1
+Icon1WorkingDir=[Program Files]
+Icon1IconFile=
+Icon1RealFile=X:\projects\w30\project1.exe
+Icon1WhichIcon=0
+Icon1KeyVirtual=0
+Icon1KeyFlags=0
+Icon1StartMenu=0
+Icon1Window=0
+
+[Autoexec]
+PathDir=
+ShareLocks=
+ShareFiles=
+Command=
+
+[CopyToFloppy]
+DriveOption=
+DestinationPath=
+DestinationPathOneFile=
+Password=
