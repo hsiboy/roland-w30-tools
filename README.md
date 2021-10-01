@@ -28,3 +28,18 @@ feedback from everyone who tried the game to
 	pikcsi@c3.hu
 
 The rest of the programs are (for those who want to program the W30) :
+
+|name | function|
+------|----------
+coddisk|;create "special" disks
+ass|;i8096 assembler
+feltesz|;program to put file onto a W30 disk
+ibmw30|;ditto
+leszed|;program to get a W30 disk into a file
+mivan|;program to list wave data on a W30 disk
+snake|;THE GAME :) [use coddisk]
+dis|;i8096 disassembler
+
+
+you can compile the .C sources with Borland/MSC/Watcom.
+The comments in the sources are in Hungarian.
