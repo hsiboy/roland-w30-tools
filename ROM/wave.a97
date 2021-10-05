@@ -1,0 +1,145 @@
+26a1	scall	26B1		;call gotoxy
+26a3	ldb	50,49
+26a6	jbc0	4E,26AC
+26a9	addb	#80,49
+26ac	scall	28A8
+26ae	incb	4C		;inc x coord.
+26b0	ret
+
+26b1	ldbe	4C,48		;gotoxy 4c = x, 4d = y
+26b4	ldbe	4D,46
+26b7	mulub	#28,46
+26ba	add	48,46		;46 = (4d * 40d) + 4c
+26bd	st	6008[00],46
+26c2	add	6000[00],46
+26c7	ret			;46 = cim
+
+2737	ldb	50,24
+273a	ldbe	24,44
+273d	shr	44, 04
+2740	ldb	2753[44],50
+2745	scall	26A1
+2747	and	#000F,24,44
+274c	ldb	2753[44],50
+2751	sjmp	26A1
+
+28a8	scall	28DC
+28aa	ldb	#C4,48
+28ad	sjmp	28D3
+
+28af	ldb	#C0,48
+28b2	sjmp	28D3
+
+28b4	scall	28DC
+28b6	ldb	#C5,48
+28b9	sjmp	28F5
+
+28bb	ldb	600a[00],48
+28c0	orb	#80,48
+28c3	sjmp	28ED
+
+28c5	ldb	e402[00],44	;wait for pikcsor rdy
+28ca	andb	#03,44
+28cd	cmpb	#03,44
+28d0	jne	28C5
+28d2	ret
+
+28d3	scall	28C5
+28d5	stb	e400[00],49
+28da	sjmp	28ED
+
+28dc	ldb	#24,48		;46 = cim
+28df	scall	28C5
+28e1	stb	e400[00],46
+28e6	scall	28C5
+28e8	stb	e400[00],47
+28ed	scall	28C5
+28ef	stb	e402[00],48
+28f4	ret
+
+28f5	scall	28ED
+28f7	scall	28C5
+28f9	ldb	e400[00],49
+28fe	clrc
+28ff	ret
+2900	ldb	c800[00],24
+2905	jbs0	24,2900
+2908	ret
+2909	ldb	c200[00],24
+290e	jbc0	24,2909
+2911	ret
+2912	ldb	c200[00],24
+2917	jbc2	24,2912
+291a	ldb	c800[00],24
+291f	ret
+2920	ldb	#03,24
+2923	stb	c800[00],24
+2928	lcall	2912
+292b	ldb	24,68
+292e	ret
+292f	ldb	#D8,24
+2932	stb	c800[00],24
+2937	lcall	2912
+293a	ldb	#D0,24
+293d	stb	c800[00],24
+2942	ldb	#10,24
+2945	djnz	24,2945
+2948	ldb	c800[00],24
+294d	push	24
+294f	ldb	c200[00],24
+2954	jbs2	24,294F
+2957	pop	24
+2959	ret
+
+2f7f	ld	#0FFF,2C
+2f83	ld	#1000,2E
+2f87	clr	36
+
+2f89	ld	#FFFF,34
+2f8d	ld	#0614,4C
+2f91	ldb	#00,4E
+2f94	ldb	36,50
+2f97	lcall	2737		;kimegy a hexa numero
+
+2f9a	stb	c011[00],36	;c011 = page register
+2f9f	stb	[34],24
+2fa2	inc	34
+2fa4	add	36,34,3A
+2fa8	shl	3A, 04
+2fab	stb	c809[00],3A	;mintaadat
+2fb0	stb	c80b[00],3B	;ez a highebbik byte
+2fb5	cmp	2C,34
+2fb8	jlt	2FA2
+2fba	inc	36
+2fbc	cmp	#0080,36
+2fc0	jlt	2F89
+
+2fc2	clr	36
+
+2fc4	clr	34
+2fc6	ld	#0614,4C
+2fca	ldb	36,50
+2fcd	lcall	2737
+2fd0	stb	c011[00],36
+2fd5	ld	34,3A
+2fd8	shl	3A, 01
+2fdb	or	#E001,3A
+2fdf	ldb	[3A],24
+
+2fe2	add	36,34,3A
+2fe6	ldb	c809[00],3C
+2feb	ldb	c80b[00],3D
+2ff0	shr	3C, 04
+2ff3	xor	3A,3C
+2ff6	and	2C,3C
+2ff9	jne	3014		;rossz a darab
+2ffb	inc	34
+2ffd	cmp	2E,34
+3000	jlt	2FE2
+
+3002	inc	36
+3004	cmp	#0080,36
+3008	jlt	2FC4
+
+300a	lcall	2723		;Ok szoveg
+

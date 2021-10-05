@@ -1,0 +1,160 @@
+0d51	ld	#0100,sp
+0d55	ld	#0022,1C
+0d59	stb	[1C]+,zero
+0d5c	cmp	#0053,1C
+0d60	jne	0D59
+0d62	inc	1C
+0d64	stb	[1C]+,zero
+0d67	cmp	#00FF,1C
+0d6b	jne	0D64
+
+0d6d	lcall	0190
+0d70	lcall	02F9
+
+0d73	ldb	#08,1A
+0d76	ld	#E820,1C
+0d7a	stb	[1C]+,zero
+0d7d	inc	1C
+0d7f	djnz	1A,0D7A
+
+0d82	ldb	#18,1A
+0d85	stb	d804[00],1A
+0d8a	lcall	075B		;valamit torol
+0d8d	clrb	60
+0d8f	lcall	295C
+0d92	lcall	292F
+0d95	lcall	2920
+
+0d98	ldb	#4F,62		;track = 79
+0d9b	lcall	2973		;seek
+0d9e	clrb	62		;track = 0
+0da0	lcall	2973		;seek
+
+0da3	scall	0E0C
+0da5	cmpb	#00,65
+0da8	jne	0DBF
+
+0daa	ldb	#08,66
+0dad	clrb	65
+0daf	scall	0DF6		;read boot data
+0db1	andb	#1C,65
+0db4	cmpb	#00,65
+0db7	jne	0DBC
+0db9	ljmp	4004		;no error, so jump in it
+0dbc	djnz	66,0DAD
+
+0dbf	lcall	02F9
+0dc2	lcall	2723
+0dc5	shr	00, 04
+0dc8	add	69,73,6B
+0dcc	sjmp	0E1A
+0dce	mulu	2064[60],45
+0dd3	andb	[72],6F
+0dd6	andb	[20],2E
+0dd9	scall	0C09
+0ddb	sjmp	0EDB
+0ddd	ldb	65,50
+0de0	lcall	2737
+0de3	lcall	292F
+0de6	lcall	2920
+0de9	lcall	295C
+0dec	ldb	c200[00],24
+0df1	jbs0	24,0DE6
+0df4	sjmp	0D8D
+
+0df6	ldb	#01,62
+0df9	clrb	61
+0dfb	ldb	#01,63
+0dfe	ld	#4000,34
+0e02	lcall	2A37
+0e05	cmp	#6000,34
+0e09	jne	0E02
+0e0b	ret
+
+0e0c	lcall	02F9
+0e0f	ld	#0F03,54
+0e13	ldb	c200[00],24
+0e18	jbc1	24,0E22
+0e1b	scall	0EED
+0e1d	lcall	26D5
+0e20	sjmp	0EAD
+0e22	ldb	c200[00],24
+0e27	jbc0	24,0E22
+0e2a	ldb	#08,66
+0e2d	clrb	65
+0e2f	ld	#7A00,1C
+0e33	stb	[1C]+,zero
+0e36	cmp	#7C00,1C
+0e3a	jne	0E33
+0e3c	clrb	62
+0e3e	clrb	61
+0e40	ldb	#01,63
+0e43	ld	#7A00,34
+0e47	lcall	2A37
+0e4a	andb	#1C,65
+0e4d	cmpb	#00,65
+0e50	je	0E56
+0e52	djnz	66,0E2D
+0e55	ret
+0e56	cmpb	#7F,53
+0e59	je	0E81
+0e5b	ld	#3158,1C
+0e5f	ld	#7A04,1E
+0e63	ld	#0F20,54
+0e67	ldb	[1C]+,1A
+0e6a	cmpb	[1E]+,1A
+0e6d	jne	0EA0
+0e6f	cmp	#315C,1C
+0e73	jne	0E67
+0e75	ld	#0F03,54
+0e79	ldb	7a0c[00],1C
+0e7e	jbc0	1C,0EA0
+0e81	ld	#0301,4C
+0e85	ld	#0526,4A
+0e89	lcall	0282
+0e8c	ld	#0407,4C
+0e90	ld	#7A20,54
+0e94	scall	0ED7
+0e96	ld	#0607,4C
+0e9a	ld	#7A40,54
+0e9e	sjmp	0ED7
+0ea0	scall	0EED
+0ea2	lcall	26D5
+0ea5	lcall	292F
+0ea8	scall	0EE1
+0eaa	jbs0	24,0EA8
+0ead	lcall	292F
+0eb0	scall	0EE1
+0eb2	jbc0	24,0EB0
+0eb5	lcall	2723
+0eb8	shr	00, 04
+0ebb	sjmp	0EDD
+0ebd	sjmp	0EDF
+0ebf	sjmp	0EE1
+0ec1	sjmp	0EE3
+0ec3	sjmp	0EE5
+0ec5	sjmp	0EE7
+0ec7	sjmp	0EE9
+0ec9	sjmp	0EEB
+0ecb	sjmp	0EED
+0ecd	sjmp	0EEF
+0ecf	sjmp	0EF1
+0ed1	sjmp	0EF3
+0ed3	sjmp	0FD3
+0ed5	sjmp	0E2A
+0ed7	ldb	#FE,1A
+0eda	stb	1f[54],1A
+0ede	ljmp	26DE
+0ee1	lcall	2920
+0ee4	lcall	295C
+0ee7	ldb	c200[00],24
+0eec	ret
+0eed	stb	c200[00],zero
+0ef2	cmpb	6045[00],zero
+0ef7	jne	0F00
+0ef9	push	54
+0efb	lcall	13C0
+0efe	pop	54
+0f00	clrb	60
+0f02	ret
+

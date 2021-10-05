@@ -1,0 +1,345 @@
+41e7	di
+41e8	ld	#7800,sp
+41ec	ldb	#07,24
+41ef	stb	c000[00],24
+41f4	stb	d800[00],zero
+41f9	stb	d802[00],zero
+41fe	clr	20
+4200	ld	#0026,24
+4204	stb	[24]+,zero
+4207	cmp	#0053,24
+420b	jne	4204
+420d	inc	24
+420f	stb	[24]+,zero
+4212	cmp	#0100,24
+4216	jne	420F
+4218	ld	#FFFF,28
+421c	ld	#7700,34
+4220	st	[34]+,28
+4223	cmp	#7800,34
+4227	jne	4220
+4229	andb	#DF,io2
+422c	ldb	#01,24
+422f	stb	c600[00],24
+4234	ldb	#03,24
+4237	stb	c000[00],24
+423c	jbc0	53,4247
+423f	lcall	5822
+4242	jnc	4247
+4244	ljmp	46F8
+4247	di
+4248	ld	#17D9,58
+424c	lcall	2412
+424f	ldb	#88,48
+4252	ldb	#9C,49
+4255	ld	#010C,58
+4259	lcall	240C
+425c	ld	#1FAA,58
+4260	lcall	241E
+4263	ld	#05B0,58
+4267	lcall	241B
+426a	ld	#0106,58
+426e	lcall	240C
+4271	ld	#0100,58
+4275	lcall	240C
+4278	lcall	42F2
+427b	jnc	4284
+427d	stb	c000[00],zero
+4282	sjmp	41E7
+4284	jbc0	53,428E
+4287	ld	#16B4,58
+428b	lcall	2415
+428e	ldb	#39,hsi_sta/hso_cmd
+4291	ld	#00C8,hsi_tim/hso_tim
+4295	ldb	#3A,hsi_sta/hso_cmd
+4298	ld	#012C,hsi_tim/hso_tim
+429c	st	65bc[00],zero
+42a1	st	65be[00],zero
+42a6	ldb	#05,io0/baud
+42a9	ldb	#80,io0/baud
+42ac	ldb	#09,sp_sta/sp_con
+42af	ldb	#00,ad_res/hsi_mode
+42b2	ldb	#00,ios0/ioc0
+42b5	ldb	#20,ios1/ioc1
+42b8	ldb	ios1/ioc1,24
+42bb	ldb	sp_sta/sp_con,24
+42be	andb	#00,int_pend
+42c1	ldb	#E2,int_mask
+42c4	ldb	c800[00],24
+42c9	jbs7	24,42C4
+42cc	ldb	#01,60
+42cf	lcall	246F
+42d2	ldb	#18,24
+42d5	stb	d804[00],24
+42da	clrb	99
+42dc	lcall	5E15
+42df	andb	#7F,int_pend
+42e2	ld	faf8[00],zero
+42e7	ldb	fafa[00],zero
+42ec	lcall	4A6C
+42ef	ljmp	4A8D
+42f2	ldb	#00,hsi_sta/hso_cmd
+42f5	add	#0005,timer1/watch,hsi_tim/hso_tim
+42fa	clrb	5A
+42fc	scall	430C
+42fe	lcall	4450
+4301	jnc	430B
+4303	incb	5A
+4305	cmpb	#0A,5A
+4308	jne	42FC
+430a	setc
+430b	ret
+430c	ldb	#1B,24
+430f	stb	f008[00],24
+4314	ldb	#64,24
+4317	stb	f00a[00],24
+431c	ldb	#07,24
+431f	stb	f00c[00],24
+4324	ldb	#19,24
+4327	stb	f00e[00],24
+432c	ldb	#0F,24
+432f	stb	f012[00],24
+4334	ldb	#FF,24
+4337	stb	f00c[00],24
+433c	ldb	#00,24
+433f	stb	f010[00],24
+4344	ldb	#21,24
+4347	stb	f010[00],24
+434c	ldb	#20,24
+434f	stb	f010[00],24
+4354	ldb	#28,24
+4357	stb	f010[00],24
+435c	ldb	#FF,24
+435f	stb	f004[00],24
+4364	ldb	#01,24
+4367	stb	f006[00],24
+436c	ldb	#FF,24
+436f	stb	f004[00],24
+4374	ldb	#FF,24
+4377	stb	f006[00],24
+437c	ld	#4638,34
+4380	ldb	#01,26
+4383	ldb	26,2B
+4386	ldb	0[34],2A
+438a	ldb	1[34],29
+438e	ldb	2[34],28
+4392	st	2C,28
+4395	st	2E,2A
+4398	or	#8000,28
+439c	shll	2C, 01
+439f	stb	f004[00],2E
+43a4	stb	f006[00],2F
+43a9	stb	f004[00],28
+43ae	stb	f006[00],29
+43b3	add	#0003,34
+43b7	incb	26
+43b9	cmpb	#40,26
+43bc	jne	4383
+43be	ldb	#31,24
+43c1	stb	f010[00],24
+43c6	ldb	#30,24
+43c9	stb	f010[00],24
+43ce	ldb	#32,24
+43d1	stb	f010[00],24
+43d6	ldb	#46,24
+43d9	stb	f010[00],24
+43de	ldb	#07,24
+43e1	stb	f00c[00],24
+43e6	ld	#0031,28
+43ea	ld	#3800,2E
+43ee	lcall	441D
+43f1	ld	#0041,28
+43f5	ld	#3800,2E
+43f9	lcall	441D
+43fc	ld	#0011,28
+4400	ld	#0000,2E
+4404	lcall	441D
+4407	ld	#0001,28
+440b	ld	#4000,2E
+440f	lcall	441D
+4412	ld	#0021,28
+4416	ld	#4000,2E
+441a	ljmp	441D
+441d	ldb	#10,26
+4420	lcall	4449
+4423	ldb	28,24
+4426	stb	f000[00],24
+442b	ldb	29,24
+442e	stb	f002[00],24
+4433	ldb	2E,24
+4436	stb	f004[00],24
+443b	ldb	2F,24
+443e	stb	f006[00],24
+4443	inc	28
+4445	djnz	26,4420
+4448	ret
+4449	ldb	#20,27
+444c	djnz	27,444C
+444f	ret
+4450	ldb	#00,ad_res/hsi_mode
+4453	ldb	#00,ios0/ioc0
+4456	ldb	#20,ios1/ioc1
+4459	ld	#0011,28
+445d	ld	#4000,2E
+4461	lcall	441D
+4464	ldb	#12,24
+4467	mulub	#03,24
+446a	ld	#7FFF,2C
+446e	clr	54
+4470	ldb	#08,26
+4473	stb	c011[00],24
+4478	stb	e001[54],zero
+447d	stb	c009[00],2C
+4482	stb	c00b[00],2D
+4487	error	26
+4489	error	26
+448b	add	#0002,54
+448f	djnz	26,4473
+4492	ldbe	#3201,28
+4496	sub	#1E28,28
+449a	addb	[28],70,28
+449e	ldbe	DB,14
+44a1	incb	32
+44a3	cmpb	#03,32
+44a6	jne	449B
+44a8	ld	#0011,28
+44ac	ld	#0000,2E
+44b0	lcall	441D
+44b3	clrc
+44b4	ret
+44b5	setc
+44b6	ret
+44b7	clrb	46
+44b9	scall	44C3
+44bb	incb	46
+44bd	cmpb	#10,46
+44c0	jne	44B9
+44c2	ret
+44c3	clrb	47
+44c5	scall	4597
+44c7	ld	#0004,28
+44cb	clr	2A
+44cd	nop
+44ce	nop
+44cf	nop
+44d0	nop
+44d1	nop
+44d2	scall	45AF
+44d4	ld	#0004,28
+44d8	clr	2A
+44da	nop
+44db	nop
+44dc	nop
+44dd	nop
+44de	nop
+44df	lcall	45D8
+44e2	ld	#6004,28
+44e6	ldbe	#2A03,FD
+44ea	nop
+44eb	nop
+44ec	nop
+44ed	nop
+44ee	scall	4610
+44f0	ret
+44f1	ld	#FFFF,28
+44f5	stb	c001[00],28
+44fa	stb	c003[00],29
+44ff	ret
+4500	clr	28
+4502	stb	c001[00],28
+4507	stb	c003[00],29
+450c	ret
+450d	clr	46
+450f	ldb	#08,24
+4512	cmpb	#01,32
+4515	je	451A
+4517	ldb	#27,24
+451a	mulub	24,32,30
+451e	ldb	30,24
+4521	scall	452C
+4523	inc	46
+4525	cmp	#0010,46
+4529	jne	451E
+452b	ret
+452c	ldb	#7F,25
+452f	ldbe	46,44
+4532	inc	44
+4534	shl	44, 05
+4537	add	#D007,44
+453b	stb	[44],24
+453e	stb	c005[00],24
+4543	stb	c007[00],25
+4548	nop
+4549	nop
+454a	ret
+454b	clrb	26
+454d	clrb	26
+454f	clr	2C
+4551	ldb	#FF,27
+4554	scall	4578
+4556	djnz	26,4554
+4559	ld	#03FE,3C
+455d	scall	4578
+455f	cmpb	#01,32
+4562	jne	456B
+4564	cmpb	#7F,29
+4567	jh	4576
+4569	sjmp	4570
+456b	cmpb	#80,29
+456e	jnh	4576
+4570	dec	3C
+4572	jne	455D
+4574	clrc
+4575	ret
+4576	setc
+4577	ret
+4578	ldb	#0F,ad_res/ad_cmd
+457b	nop
+457c	nop
+457d	nop
+457e	nop
+457f	jbs3	ad_res/ad_cmd,457F
+4582	ldb	ad_res/ad_cmd,28
+4585	andb	#C0,28
+4588	ldb	ad_res/hsi_mode,29
+458b	ret
+458c	or	30,71
+458f	ldbeb	ff00[9C],30
+4594	or	io2,E0
+4597	ldbe	46,44
+459a	shl	44, 05
+459d	add	#D009,44
+45a1	stb	[44],24
+45a4	stb	c005[00],47
+45a9	stb	c007[00],zero
+45ae	ret
+45af	ldbe	46,44
+45b2	shl	44, 05
+45b5	add	#D00B,44
+45b9	stb	[44],24
+45bc	stb	c005[00],28
+45c1	stb	c007[00],29
+45c6	andb	#03,2A
+45c9	shl	2A, 04
+45cc	andb	#CF,47
+45cf	orb	2A,47
+45d2	nop
+45d3	nop
+45d4	nop
+45d5	ljmp	4597
+45d8	shll	28, 0E
+45db	ldbe	46,44
+45de	shl	44, 05
+45e1	add	#D005,44
+45e5	stb	[44],24
+45e8	stb	c005[00],28
+45ed	stb	c007[00],29
+45f2	nop
+45f3	nop
+45f4	nop
+45f5	nop
+45f6	nop
+45f7	nop
+45f8	ldbe	46,44
+45fb	shl	44, 05
+45fe	add	#D003,44
